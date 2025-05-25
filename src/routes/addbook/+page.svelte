@@ -2,7 +2,6 @@
   let title = "";
   let genre = "";
   let price = "";
-  let photo_url = "";
 
    function saveBook() {
     const newBook = { title, genre, price };
@@ -26,7 +25,6 @@
   <input type="text" placeholder="Title" bind:value={title} required />
   <input type="text" placeholder="Genre" bind:value={genre} required />
   <input type="number" placeholder="Price (CHF)" bind:value={price} />
-  <input type="text" placeholder="Cover Image URL" bind:value={photo_url} />
 
   <button type="submit" class="btn btn-primary mt-2">Add Book</button>
 </form>
