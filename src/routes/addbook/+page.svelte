@@ -4,14 +4,16 @@
   let price = "";
   let photo_url = "";
 
-  function saveBook() {
-    const newBook = { title, genre, price, photo_url };
-    const savedBooks = JSON.parse(localStorage.getItem("customBooks")) || [];
-    savedBooks.push(newBook);
-    localStorage.setItem("customBooks", JSON.stringify(savedBooks));
+   function saveBook() {
+    const newBook = { title, genre, price };
+    const readlist = JSON.parse(localStorage.getItem("readlist")) || [];
+
+    readlist.push(newBook);
+    localStorage.setItem("readlist", JSON.stringify(readlist));
 
     alert("Book added successfully!");
-    window.location.href = "/books";
+    window.location.href = "/readlist"; 
+  
   }
 </script>
 
