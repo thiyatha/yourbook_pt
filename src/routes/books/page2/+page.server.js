@@ -2,19 +2,18 @@ import { getCollection } from "$lib/db";
 
 export async function load() {
   const booksRaw = await (await getCollection("books")).find().toArray();
+  const authorsRaw = await (await getCollection("authors")).find().toArray();
 
-  const books = booksRaw.map((book, index) => {
-    const coverNumber = index + 1;
+  const authorMap = new Map(authorsRaw.map(author => [author.author_id, author.name]));
 
-    return {
-      ...book,
-      _id: book._id.toString(),
-      photo_url:
-        coverNumber <= 20
-          ? `/covers/${coverNumber}.png`
-          : "/covers/placeholder.png",
-    };
-  });
+  const books = booksRaw.map((book) => ({
+    ...book,
+    _id: book._id.toString(),
+    authorName: authorMap.get(book.author_id),
+    photo_url: book.book_id <= 20
+      ? `/covers/${book.book_id}.png`
+      : "/covers/placeholder.png",
+  }));
 
   return { books };
 }
