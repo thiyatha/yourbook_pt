@@ -29,6 +29,7 @@
       <img src={book.photo_url} alt="Cover von {book.title}" />
       <h2>{book.title}</h2>
       <p>{book.genre}</p>
+      <p><em>{book.authorName}</em></p>
       <p><strong>CHF {book.price}</strong></p>
       <a href={`/books/${book._id}`} class="btn btn-primary">Buy</a>
       <button class="btn btn-outline-danger mt-2" on:click={() => addToReadlist(book)}>
