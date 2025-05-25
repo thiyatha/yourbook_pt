@@ -1,6 +1,19 @@
 <script>
+  import { goto } from '$app/navigation';
+
   export let data;
-  const books = data.books.slice(0, 14); 
+  const books = data.books.slice(0, 14);
+
+  function addToReadlist(book) {
+    const readlist = JSON.parse(localStorage.getItem('readlist') || '[]');
+    if (!readlist.find(b => b.book_id === book.book_id)) {
+      readlist.push(book);
+      localStorage.setItem('readlist', JSON.stringify(readlist));
+    }
+
+    goto('/readlist');
+  }
+  
 </script>
 
 <div class="pagination">

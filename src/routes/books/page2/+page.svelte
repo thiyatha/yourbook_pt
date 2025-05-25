@@ -1,6 +1,19 @@
 <script>
+  import { goto } from '$app/navigation';
+
   export let data;
-  const books = data.books.slice(15, 29); 
+  const books = data.books.slice(15, 29);
+
+  function addToReadlist(book) {
+    const readlist = JSON.parse(localStorage.getItem('readlist') || '[]');
+    if (!readlist.find(b => b.book_id === book.book_id)) {
+      readlist.push(book);
+      localStorage.setItem('readlist', JSON.stringify(readlist));
+    }
+
+    goto('/readlist');
+  }
+  
 </script>
 
 <div class="pagination">
@@ -16,6 +29,7 @@
       <img src={book.photo_url} alt="Cover von {book.title}" />
       <h2>{book.title}</h2>
       <p>{book.genre}</p>
+      <p><em>{book.authorName}</em></p>
       <p><strong>CHF {book.price}</strong></p>
       <a href={`/books/${book._id}`} class="btn btn-primary">Buy</a>
       <button class="btn btn-outline-danger mt-2" on:click={() => addToReadlist(book)}>

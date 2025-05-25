@@ -2,7 +2,27 @@
 
 <p>Your saved books:</p>
 
-<ul>
-  <li><strong>Twilight Tranquility</strong> – Science Fiction – CHF 8.1</li>
-  <li><strong>Echoes of Eternity</strong> – Romance – CHF 44.7</li>
-</ul>
+<script>
+  import { onMount } from 'svelte';
+  let readlist = [];
+
+  onMount(() => {
+    const stored = localStorage.getItem('readlist');
+    if (stored) {
+      readlist = JSON.parse(stored);
+    }
+  });
+</script>
+
+
+{#if readlist.length > 0}
+  <ul>
+    {#each readlist as book}
+      <li>
+        <strong>{book.title}</strong> – {book.genre} – CHF {book.price}
+      </li>
+    {/each}
+  </ul>
+{:else}
+  <p>No books in your readlist yet.</p>
+{/if}
