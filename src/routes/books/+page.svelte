@@ -18,8 +18,10 @@
       <p>{book.genre}</p>
       <p><em>{book.authorName}</em></p>
       <p><strong>CHF {book.price}</strong></p>
-      <a href={`/books/${book.book_id}`} class="btn btn-primary">Buy</a>
-      <a href="/readlist" class="btn btn-outline-danger mt-2">Readlist</a>
+      <a class="btn btn-primary" href={`/books/${book.book_id}`}>Buy</a>
+      <button class="btn btn-outline-danger mt-2" on:click={() => addToReadlist(book)}>
+        Readlist
+      </button>
     </div>
   {/each}
 </div>
