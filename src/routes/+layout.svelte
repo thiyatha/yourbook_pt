@@ -11,7 +11,7 @@
 	</main>
 
 	<footer>
-		<p>Get your favorite book with yourbook!</p>
+		<p>Journal your favorite book with yourbook!</p>
 	</footer>
 </div>
 
