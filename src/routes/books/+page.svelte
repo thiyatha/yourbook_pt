@@ -31,7 +31,7 @@
       <p>{book.genre}</p>
       <p><em>{book.authorName}</em></p>
       <p><strong>CHF {book.price}</strong></p>
-      <a class="btn btn-primary" href={`/books/${book.book_id}`}>Buy</a>
+      <a class="btn btn-primary" href={`/books/${book.book_id}`}>Details</a>
       <button class="btn btn-outline-danger mt-2" on:click={() => addToReadlist(book)}>
         Readlist
       </button>
