@@ -1,7 +1,6 @@
 <script>
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
+	import welcome from "$lib/images/svelte-welcome.webp";
+	import welcome_fallback from "$lib/images/svelte-welcome.png";
 </script>
 
 <svelte:head>
@@ -18,14 +17,20 @@
 			</picture>
 		</span>
 
-		to your new<br />SvelteKit app
+		<strong>to</strong>
+
+		<div style="margin-top: 1rem;">
+			<img
+				src="/logo/yourbook.png"
+				alt="YourBook Logo"
+				style="height: 200px;"
+			/>
+		</div>
 	</h1>
 
 	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
+		<a href="/books" class="btn btn-danger">Go to Books</a>
 	</h2>
-
-	<Counter />
 </section>
 
 <style>
